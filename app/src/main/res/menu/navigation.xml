@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/buscador"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/buscador" />
+
+    <item
+        android:id="@+id/agenda"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/agenda" />
+
+    <item
+        android:id="@+id/peticiones"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="@string/peticiones" />
+
+    <item
+        android:id="@+id/map"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="@string/map" />
+
+</menu>
