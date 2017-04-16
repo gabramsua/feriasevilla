@@ -1,11 +1,13 @@
 package com.gabant.feriasevilla.Interfaz;
 
+import com.gabant.feriasevilla.Clases.ListU_usuario;
 import com.gabant.feriasevilla.Clases.LoginUsuario;
 import com.gabant.feriasevilla.Clases.Usuario;
 
 import retrofit.Call;
 import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;
+import retrofit.http.GET;
 import retrofit.http.POST;
 
 /**
@@ -18,4 +20,7 @@ public interface IRetrofit {
     @FormUrlEncoded
     @POST("log")
     Call<LoginUsuario> getLogin(@Field("user") String user, @Field("password") String password);
+
+    @GET("u_usuarios")
+    Call<ListU_usuario> getU_usuario();
 }

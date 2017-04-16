@@ -7,10 +7,14 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.gabant.feriasevilla.Clases.U_usuario;
+import com.gabant.feriasevilla.Fragments.AgendaFragment;
 import com.gabant.feriasevilla.Fragments.BuscadorFragment;
+import com.gabant.feriasevilla.Interfaz.IFeria;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements IFeria{
 
     Fragment f;
 
@@ -27,10 +31,10 @@ public class MainActivity extends AppCompatActivity {
                             .commit();
                     return true;
                 case R.id.agenda:
-                    /*f = new AgendaFragment();
+                    f = new AgendaFragment();
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.content, f)
-                            .commit();*/
+                            .commit();
                     return true;
                 case R.id.peticiones:
                     /*f = new PeticionesFragment();
@@ -59,4 +63,8 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
+    @Override
+    public void OnClickU_usuario(U_usuario u) {
+        Toast.makeText(this, u.getEstado()+"", Toast.LENGTH_SHORT).show();
+    }
 }

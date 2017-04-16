@@ -36,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //Si el usuario ya se ha registrado, entramos.
         if(!settings.getString("ID_USER", "N").equalsIgnoreCase("N")){
+
             Intent i = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(i);
         }
