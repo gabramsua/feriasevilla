@@ -1,8 +1,11 @@
 package com.gabant.feriasevilla;
 
+import android.content.ContentResolver;
+import android.database.Cursor;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -11,11 +14,13 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.gabant.feriasevilla.Clases.Contacto;
 import com.gabant.feriasevilla.Clases.U_usuario;
 import com.gabant.feriasevilla.Fragments.AgendaFragment;
 import com.gabant.feriasevilla.Fragments.BuscadorFragment;
 import com.gabant.feriasevilla.Fragments.MapFragment;
 import com.gabant.feriasevilla.Interfaz.IFeria;
+import com.gabant.feriasevilla.Recycler.ContactoFragmentList;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,15 +30,18 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity implements IFeria{
 
     Fragment f;
+    static List<Contacto> contactos;
+
+    public static List<Contacto> getContactos() {return contactos;}
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.buscador:
-                    f = new BuscadorFragment();
+                    f = new ContactoFragmentList();
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.content, f)
                             .commit();
@@ -69,6 +77,9 @@ public class MainActivity extends AppCompatActivity implements IFeria{
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        contactos = new ArrayList<>();
+        //getAllContacts();
     }
 
     @Override
@@ -80,6 +91,13 @@ public class MainActivity extends AppCompatActivity implements IFeria{
     public void OnClickDetalleLocation(U_usuario u) {
 
         getLatLon(u.getIdAmigo().getCaseta());
+
+    }
+
+    @Override
+    public void onClickContactoUsuario(Contacto contacto) {
+
+        Toast.makeText(this, "Ver detalle de "+contacto.getNombre(), Toast.LENGTH_SHORT).show();
 
     }
 
@@ -110,4 +128,6 @@ public class MainActivity extends AppCompatActivity implements IFeria{
                 .replace(R.id.content, f)
                 .commit();
     }
+
+
 }

@@ -25,7 +25,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     MapView mMapView;;
     private GoogleMap mMap;
     Marker perth;
-    Double lat,lon;
+    Double lat=0.0,lon=0.0;
 
     public MapFragment() {
         // Required empty public constructor

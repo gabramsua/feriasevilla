@@ -1,5 +1,6 @@
 package com.gabant.feriasevilla.Interfaz;
 
+import com.gabant.feriasevilla.Clases.Contacto;
 import com.gabant.feriasevilla.Clases.U_usuario;
 
 /**
@@ -9,4 +10,5 @@ import com.gabant.feriasevilla.Clases.U_usuario;
 public interface IFeria {
     void OnClickU_usuario(U_usuario u);
     void OnClickDetalleLocation(U_usuario u);
+    void onClickContactoUsuario(Contacto contacto);
 }

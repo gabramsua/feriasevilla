@@ -1,6 +1,7 @@
 package com.gabant.feriasevilla.Interfaz;
 
 import com.gabant.feriasevilla.Clases.ListU_usuario;
+import com.gabant.feriasevilla.Clases.ListUsuario;
 import com.gabant.feriasevilla.Clases.LoginUsuario;
 import com.gabant.feriasevilla.Clases.Usuario;
 
@@ -20,6 +21,9 @@ public interface IRetrofit {
     @FormUrlEncoded
     @POST("log")
     Call<LoginUsuario> getLogin(@Field("user") String user, @Field("password") String password);
+
+    @GET("usuarios")
+    Call<ListUsuario> getUsuarios();
 
     @GET("u_usuarios")
     Call<ListU_usuario> getU_usuario();

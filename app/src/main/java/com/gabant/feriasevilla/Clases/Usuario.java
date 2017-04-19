@@ -97,4 +97,13 @@ public class Usuario {
     public void setSexo(String sexo) {
         this.sexo = sexo;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "user='" + user + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", numTelefono='" + numTelefono + '\'' +
+                '}';
+    }
 }
