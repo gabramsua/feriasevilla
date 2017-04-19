@@ -1,23 +1,18 @@
 package com.gabant.feriasevilla;
 
-import android.content.ContentResolver;
-import android.database.Cursor;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gabant.feriasevilla.Clases.Contacto;
 import com.gabant.feriasevilla.Clases.U_usuario;
 import com.gabant.feriasevilla.Fragments.AgendaFragment;
-import com.gabant.feriasevilla.Fragments.BuscadorFragment;
 import com.gabant.feriasevilla.Fragments.MapFragment;
 import com.gabant.feriasevilla.Interfaz.IFeria;
 import com.gabant.feriasevilla.Recycler.ContactoFragmentList;
