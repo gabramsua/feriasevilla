@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gabant.feriasevilla.Clases.U_usuario;
@@ -51,6 +52,15 @@ public class MyUusuarioRecyclerViewAdapter extends RecyclerView.Adapter<MyUusuar
                 }
             }
         });
+
+        holder.location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (null != mListener) {
+                    mListener.OnClickDetalleLocation(holder.mItem);
+                }
+            }
+        });
     }
 
     @Override
@@ -63,12 +73,14 @@ public class MyUusuarioRecyclerViewAdapter extends RecyclerView.Adapter<MyUusuar
         public final TextView nombre;
         public final TextView caseta;
         public U_usuario mItem;
+        public final ImageView location;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
             nombre = (TextView) view.findViewById(R.id.nombreAmigo);
             caseta = (TextView) view.findViewById(R.id.caseta);
+            location = (ImageView) view.findViewById(R.id.location);
         }
 
         @Override

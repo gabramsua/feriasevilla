@@ -1,5 +1,7 @@
 package com.gabant.feriasevilla;
 
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -12,7 +14,13 @@ import android.widget.Toast;
 import com.gabant.feriasevilla.Clases.U_usuario;
 import com.gabant.feriasevilla.Fragments.AgendaFragment;
 import com.gabant.feriasevilla.Fragments.BuscadorFragment;
+import com.gabant.feriasevilla.Fragments.MapFragment;
 import com.gabant.feriasevilla.Interfaz.IFeria;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements IFeria{
 
@@ -43,10 +51,10 @@ public class MainActivity extends AppCompatActivity implements IFeria{
                             .commit();*/
                     return true;
                 case R.id.map:
-                    /*f = new MapFragment();
+                    f = new MapFragment();
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.content, f)
-                            .commit();*/
+                            .commit();
                     return true;
             }
             return false;
@@ -66,5 +74,40 @@ public class MainActivity extends AppCompatActivity implements IFeria{
     @Override
     public void OnClickU_usuario(U_usuario u) {
         Toast.makeText(this, u.getEstado()+"", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void OnClickDetalleLocation(U_usuario u) {
+
+        getLatLon(u.getIdAmigo().getCaseta());
+
+    }
+
+    private void getLatLon(String caseta) {
+        Geocoder geocoder;
+        List<Address> addresses = new ArrayList<>();
+        geocoder = new Geocoder(this, Locale.getDefault());
+
+        try {
+            addresses = geocoder.getFromLocationName(caseta, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Double lat = addresses.get(0).getLatitude();
+        Double lon = addresses.get(0).getLongitude();
+
+        f = new MapFragment();
+        Bundle args = new Bundle();
+        args.putDouble("lat", lat);
+        args.putDouble("lon", lon);
+        f.setArguments(args);
+
+        System.out.println("Caseta: "+caseta);
+        System.out.println(lat +" "+lon);
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content, f)
+                .commit();
     }
 }
