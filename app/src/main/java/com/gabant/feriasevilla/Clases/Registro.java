@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by macias on 12/04/2017.
  */
 
-public class Error {
+public class Registro {
     @SerializedName("status")
     @Expose
     private String status;
@@ -29,5 +29,13 @@ public class Error {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    @Override
+    public String toString() {
+        return "Registro{" +
+                "status='" + status + '\'' +
+                ", message='" + message + '\'' +
+                '}';
     }
 }

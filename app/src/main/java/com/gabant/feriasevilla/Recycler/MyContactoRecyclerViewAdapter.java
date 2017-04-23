@@ -44,7 +44,7 @@ public class MyContactoRecyclerViewAdapter extends RecyclerView.Adapter<MyContac
 
         for(Usuario u : usuarios){
             System.out.println("Comparando "+u.getNumTelefono()+" con "+holder.mItem.getTelefono());
-            if(u.getNumTelefono().equals(holder.mItem.getTelefono())){
+            if(u.getNumTelefono().equals(holder.mItem.getTelefono())){ // Tiene la app
                 System.out.println("HAY UNO IGUAL!!"+ holder.mItem);
                 holder.mIdView.setText(mValues.get(position).getNombre());
                 holder.mContentView.setText(mValues.get(position).getTelefono());
@@ -59,6 +59,21 @@ public class MyContactoRecyclerViewAdapter extends RecyclerView.Adapter<MyContac
                         }
                     }
                 });
+            } else{ // NO tiene la app
+                holder.mIdView.setText(mValues.get(position).getNombre());
+                holder.mContentView.setText(mValues.get(position).getTelefono());
+
+                /*holder.mView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (null != mListener) {
+                            // Notify the active callbacks interface (the activity, if the
+                            // fragment is attached to one) that an item has been selected.
+                            mListener.onClickInvitar(holder.mItem);
+                        }
+                    }
+                });
+                */
             }
         }
         System.out.println("fin del for");

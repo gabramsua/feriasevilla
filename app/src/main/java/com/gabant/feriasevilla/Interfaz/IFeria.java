@@ -11,4 +11,5 @@ public interface IFeria {
     void OnClickU_usuario(U_usuario u);
     void OnClickDetalleLocation(U_usuario u);
     void onClickContactoUsuario(Contacto contacto);
+    void onClickInvitar(Contacto contacto);
 }

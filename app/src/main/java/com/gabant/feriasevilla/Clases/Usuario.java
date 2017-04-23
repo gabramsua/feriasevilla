@@ -34,6 +34,8 @@ public class Usuario {
     @Expose
     private String sexo;
 
+
+
     public String getId() {
         return id;
     }

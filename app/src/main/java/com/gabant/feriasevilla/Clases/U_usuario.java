@@ -65,4 +65,14 @@ public class U_usuario {
         this.estado = estado;
     }
 
+    @Override
+    public String toString() {
+        return "U_usuario{" +
+                "id='" + id + '\'' +
+                ", idUsuario=" + idUsuario +
+                ", idAmigo=" + idAmigo +
+                ", fecha='" + fecha + '\'' +
+                ", estado='" + estado + '\'' +
+                '}';
+    }
 }
